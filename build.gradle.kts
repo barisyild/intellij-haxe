@@ -93,10 +93,16 @@ dependencies {
 
 }
 
-subprojects {
+allprojects {
     apply(plugin = "java")
     apply(plugin = "idea")
     apply(plugin = "org.jetbrains.kotlin.jvm")
+}
+
+subprojects {
+    apply(plugin = "org.jetbrains.intellij.platform.module")
+
+    println(project.name)
 
     if (project.name == "jps-plugin") {
         java {
@@ -109,10 +115,6 @@ subprojects {
             targetCompatibility = JavaVersion.VERSION_17
         }
     }
-}
-
-subprojects {
-    apply(plugin = "org.jetbrains.intellij.platform.module")
 
     repositories {
         mavenCentral()
