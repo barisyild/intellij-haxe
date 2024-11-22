@@ -92,14 +92,22 @@ dependencies {
     }
 
 }
-allprojects {
+
+subprojects {
     apply(plugin = "java")
     apply(plugin = "idea")
     apply(plugin = "org.jetbrains.kotlin.jvm")
 
-    java {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+    if (project.name == "jps-plugin") {
+        java {
+            sourceCompatibility = JavaVersion.VERSION_11
+            targetCompatibility = JavaVersion.VERSION_11
+        }
+    }else{
+        java {
+            sourceCompatibility = JavaVersion.VERSION_17
+            targetCompatibility = JavaVersion.VERSION_17
+        }
     }
 }
 
